@@ -1,8 +1,7 @@
 import BodyWrapper from '@/app/BodyWrapper'
+import AddProject from '@/components/AddProject'
 import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
 import { Card, CardAction, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
-import { PlusCircleIcon } from 'lucide-react'
 import React from 'react'
 import { SlGraph } from 'react-icons/sl'
 
@@ -10,14 +9,7 @@ const Page = () => {
     return (
         <BodyWrapper className='p-5'>
             <div className=''>
-                <div className="flex items-center w-full justify-between">
-                    <div className="">
-                        <h2 className='text-xl font-semibold text-zinc-800'>Project Dashboard</h2>
-                        <p className='text-sm mt-1 text-zinc-600'>Manage your collaborative projects and payments</p>
-                    </div>
-                    <Button> <PlusCircleIcon /> New Project</Button>
-                </div>
-
+                <AddProject />
                 <div className="grid mt-10 md:grid-cols-2 gap-3 grid-cols-1">
                     <Card className="@container/card">
                         <CardHeader>

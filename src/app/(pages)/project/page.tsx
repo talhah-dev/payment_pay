@@ -1,12 +1,13 @@
 "use client"
 import BodyWrapper from '@/app/BodyWrapper'
+import AddProject from '@/components/AddProject'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardAction, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/command'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { Progress } from '@/components/ui/progress'
-import { Calendar, PlusCircleIcon, Wallet } from 'lucide-react'
+import { Calendar, Wallet } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
 
 type Status = {
@@ -50,13 +51,7 @@ const Page = () => {
         <BodyWrapper className='p-5'>
             <div className=''>
 
-                <div className="flex items-center w-full justify-between">
-                    <div className="">
-                        <h2 className='text-xl font-medium text-zinc-800'>Project Dashboard</h2>
-                        <p className='text-sm mt-1 text-zinc-600'>Manage your collaborative projects and payments</p>
-                    </div>
-                    <Button> <PlusCircleIcon /> New Project</Button>
-                </div>
+                <AddProject />
 
                 <Command className="rounded-lg mt-10 border shadow-md max-w-xs">
                     <CommandInput placeholder="Type a command or search..." />
@@ -81,7 +76,7 @@ const Page = () => {
                                     <Wallet className="size-4" /> 2000 PKR
                                 </div>
                                 <div className="line-clamp-1 mt-2 flex gap-2 font-medium">
-                                    <Calendar className="size-4" /> 12 feb
+                                    <Calendar className="size-4" /> 12 feb - 12:00
                                 </div>
                                 <Progress value={progress} className="mt-1.5 w-[60%]" />
                             </div>
