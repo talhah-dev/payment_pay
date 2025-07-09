@@ -1,0 +1,478 @@
+[
+    {
+        "id": 1,
+        "header": "Cover page",
+        "type": "Cover page",
+        "status": "In Process",
+        "reviewer": "300"
+    },
+    {
+        "id": 2,
+        "header": "Table of contents",
+        "type": "Table of contents",
+        "status": "Done",
+        "reviewer": "300"
+    },
+    {
+        "id": 3,
+        "header": "Executive summary",
+        "type": "Narrative",
+        "status": "Done",
+        "reviewer": "300"
+    },
+    {
+        "id": 4,
+        "header": "Technical approach",
+        "type": "Narrative",
+        "status": "Done",
+        "reviewer": "300"
+    },
+    {
+        "id": 5,
+        "header": "Design",
+        "type": "Narrative",
+        "status": "In Process",
+        "reviewer": "300"
+    },
+    {
+        "id": 6,
+        "header": "Capabilities",
+        "type": "Narrative",
+        "status": "In Process",
+        "reviewer": "300"
+    },
+    {
+        "id": 7,
+        "header": "Integration with existing systems",
+        "type": "Narrative",
+        "status": "In Process",
+        "reviewer": "300"
+    },
+    {
+        "id": 8,
+        "header": "Innovation and Advantages",
+        "type": "Narrative",
+        "status": "Done",
+        "reviewer": "300"
+    },
+    {
+        "id": 9,
+        "header": "Overview of EMR's Innovative Solutions",
+        "type": "Technical content",
+        "status": "Done",
+        "reviewer": "300"
+    },
+    {
+        "id": 10,
+        "header": "Advanced Algorithms and Machine Learning",
+        "type": "Narrative",
+        "status": "Done",
+        "reviewer": "300"
+    },
+    {
+        "id": 11,
+        "header": "Adaptive Communication Protocols",
+        "type": "Narrative",
+        "status": "Done",
+        "reviewer": "300"
+    },
+    {
+        "id": 12,
+        "header": "Advantages Over Current Technologies",
+        "type": "Narrative",
+        "status": "Done",
+        "reviewer": "300"
+    },
+    {
+        "id": 13,
+        "header": "Past Performance",
+        "type": "Narrative",
+        "status": "Done",
+        "reviewer": "300"
+    },
+    {
+        "id": 14,
+        "header": "Customer Feedback and Satisfaction Levels",
+        "type": "Narrative",
+        "status": "Done",
+        "reviewer": "300"
+    },
+    {
+        "id": 15,
+        "header": "Implementation Challenges and Solutions",
+        "type": "Narrative",
+        "status": "Done",
+        "reviewer": "300"
+    },
+    {
+        "id": 16,
+        "header": "Security Measures and Data Protection Policies",
+        "type": "Narrative",
+        "status": "In Process",
+        "reviewer": "300"
+    },
+    {
+        "id": 17,
+        "header": "Scalability and Future Proofing",
+        "type": "Narrative",
+        "status": "Done",
+        "reviewer": "300"
+    },
+    {
+        "id": 18,
+        "header": "Cost-Benefit Analysis",
+        "type": "Plain language",
+        "status": "Done",
+        "reviewer": "300"
+    },
+    {
+        "id": 19,
+        "header": "User Training and Onboarding Experience",
+        "type": "Narrative",
+        "status": "Done",
+        "reviewer": "300"
+    },
+    {
+        "id": 20,
+        "header": "Future Development Roadmap",
+        "type": "Narrative",
+        "status": "Done",
+        "reviewer": "300"
+    },
+    {
+        "id": 21,
+        "header": "System Architecture Overview",
+        "type": "Technical content",
+        "status": "In Process",
+        "reviewer": "300"
+    },
+    {
+        "id": 22,
+        "header": "Risk Management Plan",
+        "type": "Narrative",
+        "status": "Done",
+        "reviewer": "300"
+    },
+    {
+        "id": 23,
+        "header": "Compliance Documentation",
+        "type": "Legal",
+        "status": "In Process",
+        "reviewer": "300"
+    },
+    {
+        "id": 24,
+        "header": "API Documentation",
+        "type": "Technical content",
+        "status": "Done",
+        "reviewer": "300"
+    },
+    {
+        "id": 25,
+        "header": "User Interface Mockups",
+        "type": "Visual",
+        "status": "In Process",
+        "reviewer": "300"
+    },
+    {
+        "id": 26,
+        "header": "Database Schema",
+        "type": "Technical content",
+        "status": "Done",
+        "reviewer": "300"
+    },
+    {
+        "id": 27,
+        "header": "Testing Methodology",
+        "type": "Technical content",
+        "status": "In Process",
+        "reviewer": "300"
+    },
+    {
+        "id": 28,
+        "header": "Deployment Strategy",
+        "type": "Narrative",
+        "status": "Done",
+        "reviewer": "300"
+    },
+    {
+        "id": 29,
+        "header": "Budget Breakdown",
+        "type": "Financial",
+        "status": "In Process",
+        "reviewer": "300"
+    },
+    {
+        "id": 30,
+        "header": "Market Analysis",
+        "type": "Research",
+        "status": "Done",
+        "reviewer": "300"
+    },
+    {
+        "id": 31,
+        "header": "Competitor Comparison",
+        "type": "Research",
+        "status": "In Process",
+        "reviewer": "300"
+    },
+    {
+        "id": 32,
+        "header": "Maintenance Plan",
+        "type": "Technical content",
+        "status": "Done",
+        "reviewer": "300"
+    },
+    {
+        "id": 33,
+        "header": "User Personas",
+        "type": "Research",
+        "status": "In Process",
+        "reviewer": "300"
+    },
+    {
+        "id": 34,
+        "header": "Accessibility Compliance",
+        "type": "Legal",
+        "status": "Done",
+        "reviewer": "300"
+    },
+    {
+        "id": 35,
+        "header": "Performance Metrics",
+        "type": "Technical content",
+        "status": "In Process",
+        "reviewer": "300"
+    },
+    {
+        "id": 36,
+        "header": "Disaster Recovery Plan",
+        "type": "Technical content",
+        "status": "Done",
+        "reviewer": "300"
+    },
+    {
+        "id": 37,
+        "header": "Third-party Integrations",
+        "type": "Technical content",
+        "status": "In Process",
+        "reviewer": "300"
+    },
+    {
+        "id": 38,
+        "header": "User Feedback Summary",
+        "type": "Research",
+        "status": "Done",
+        "reviewer": "300"
+    },
+    {
+        "id": 39,
+        "header": "Localization Strategy",
+        "type": "Narrative",
+        "status": "In Process",
+        "reviewer": "300"
+    },
+    {
+        "id": 40,
+        "header": "Mobile Compatibility",
+        "type": "Technical content",
+        "status": "Done",
+        "reviewer": "300"
+    },
+    {
+        "id": 41,
+        "header": "Data Migration Plan",
+        "type": "Technical content",
+        "status": "In Process",
+        "reviewer": "300"
+    },
+    {
+        "id": 42,
+        "header": "Quality Assurance Protocols",
+        "type": "Technical content",
+        "status": "Done",
+        "reviewer": "300"
+    },
+    {
+        "id": 43,
+        "header": "Stakeholder Analysis",
+        "type": "Research",
+        "status": "In Process",
+        "reviewer": "300"
+    },
+    {
+        "id": 44,
+        "header": "Environmental Impact Assessment",
+        "type": "Research",
+        "status": "Done",
+        "reviewer": "300"
+    },
+    {
+        "id": 45,
+        "header": "Intellectual Property Rights",
+        "type": "Legal",
+        "status": "In Process",
+        "reviewer": "300"
+    },
+    {
+        "id": 46,
+        "header": "Customer Support Framework",
+        "type": "Narrative",
+        "status": "Done",
+        "reviewer": "300"
+    },
+    {
+        "id": 47,
+        "header": "Version Control Strategy",
+        "type": "Technical content",
+        "status": "In Process",
+        "reviewer": "300"
+    },
+    {
+        "id": 48,
+        "header": "Continuous Integration Pipeline",
+        "type": "Technical content",
+        "status": "Done",
+        "reviewer": "300"
+    },
+    {
+        "id": 49,
+        "header": "Regulatory Compliance",
+        "type": "Legal",
+        "status": "In Process",
+        "reviewer": "300"
+    },
+    {
+        "id": 50,
+        "header": "User Authentication System",
+        "type": "Technical content",
+        "status": "Done",
+        "reviewer": "300"
+    },
+    {
+        "id": 51,
+        "header": "Data Analytics Framework",
+        "type": "Technical content",
+        "status": "In Process",
+        "reviewer": "300"
+    },
+    {
+        "id": 52,
+        "header": "Cloud Infrastructure",
+        "type": "Technical content",
+        "status": "Done",
+        "reviewer": "300"
+    },
+    {
+        "id": 53,
+        "header": "Network Security Measures",
+        "type": "Technical content",
+        "status": "In Process",
+        "reviewer": "300"
+    },
+    {
+        "id": 54,
+        "header": "Project Timeline",
+        "type": "Planning",
+        "status": "Done",
+        "reviewer": "300"
+    },
+    {
+        "id": 55,
+        "header": "Resource Allocation",
+        "type": "Planning",
+        "status": "In Process",
+        "reviewer": "300"
+    },
+    {
+        "id": 56,
+        "header": "Team Structure and Roles",
+        "type": "Planning",
+        "status": "Done",
+        "reviewer": "300"
+    },
+    {
+        "id": 57,
+        "header": "Communication Protocols",
+        "type": "Planning",
+        "status": "In Process",
+        "reviewer": "300"
+    },
+    {
+        "id": 58,
+        "header": "Success Metrics",
+        "type": "Planning",
+        "status": "Done",
+        "reviewer": "300"
+    },
+    {
+        "id": 59,
+        "header": "Internationalization Support",
+        "type": "Technical content",
+        "status": "In Process",
+        "reviewer": "300"
+    },
+    {
+        "id": 60,
+        "header": "Backup and Recovery Procedures",
+        "type": "Technical content",
+        "status": "Done",
+        "reviewer": "300"
+    },
+    {
+        "id": 61,
+        "header": "Monitoring and Alerting System",
+        "type": "Technical content",
+        "status": "In Process",
+        "reviewer": "300"
+    },
+    {
+        "id": 62,
+        "header": "Code Review Guidelines",
+        "type": "Technical content",
+        "status": "Done",
+        "reviewer": "300"
+    },
+    {
+        "id": 63,
+        "header": "Documentation Standards",
+        "type": "Technical content",
+        "status": "In Process",
+        "reviewer": "300"
+    },
+    {
+        "id": 64,
+        "header": "Release Management Process",
+        "type": "Planning",
+        "status": "Done",
+        "reviewer": "300"
+    },
+    {
+        "id": 65,
+        "header": "Feature Prioritization Matrix",
+        "type": "Planning",
+        "status": "In Process",
+        "reviewer": "300"
+    },
+    {
+        "id": 66,
+        "header": "Technical Debt Assessment",
+        "type": "Technical content",
+        "status": "Done",
+        "reviewer": "300"
+    },
+    {
+        "id": 67,
+        "header": "Capacity Planning",
+        "type": "Planning",
+        "status": "In Process",
+        "reviewer": "300"
+    },
+    {
+        "id": 68,
+        "header": "Service Level Agreements",
+        "type": "Legal",
+        "status": "Done",
+        "reviewer": "300"
+    }
+]
