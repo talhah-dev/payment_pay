@@ -55,12 +55,12 @@ import { z } from "zod"
 import { useIsMobile } from "@/hooks/use-mobile"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import {
-    ChartConfig,
-    ChartContainer,
-    ChartTooltip,
-    ChartTooltipContent,
-} from "@/components/ui/chart"
+// import {
+//     ChartConfig,
+//     ChartContainer,
+//     ChartTooltip,
+//     ChartTooltipContent,
+// } from "@/components/ui/chart"
 import { Checkbox } from "@/components/ui/checkbox"
 import {
     Drawer,
@@ -551,16 +551,16 @@ const chartData = [
     { month: "June", desktop: 214, mobile: 140 },
 ]
 
-const chartConfig = {
-    desktop: {
-        label: "Desktop",
-        color: "var(--primary)",
-    },
-    mobile: {
-        label: "Mobile",
-        color: "var(--primary)",
-    },
-} satisfies ChartConfig
+// const chartConfig = {
+//     desktop: {
+//         label: "Desktop",
+//         color: "var(--primary)",
+//     },
+//     mobile: {
+//         label: "Mobile",
+//         color: "var(--primary)",
+//     },
+// } satisfies ChartConfig
 
 function TableCellViewer({ item }: { item: z.infer<typeof schema> }) {
     const isMobile = useIsMobile()
@@ -582,7 +582,7 @@ function TableCellViewer({ item }: { item: z.infer<typeof schema> }) {
                 <div className="flex flex-col gap-4 overflow-y-auto px-4 text-sm">
                     {!isMobile && (
                         <>
-                            <ChartContainer config={chartConfig}>
+                            {/* <ChartContainer config={chartConfig}>
                                 <AreaChart
                                     accessibilityLayer
                                     data={chartData}
@@ -621,7 +621,7 @@ function TableCellViewer({ item }: { item: z.infer<typeof schema> }) {
                                         stackId="a"
                                     />
                                 </AreaChart>
-                            </ChartContainer>
+                            </ChartContainer> */}
                             <Separator />
                             <div className="grid gap-2">
                                 <div className="flex gap-2 leading-none font-medium">
