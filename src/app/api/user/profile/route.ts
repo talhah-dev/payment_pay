@@ -5,7 +5,6 @@ import { NextRequest, NextResponse } from "next/server";
 interface ProfilePayload {
     name: string;
     email: string;
-    password: string;
     role: "user" | "admin";
     profileImage: string;
 }
@@ -20,7 +19,7 @@ export async function GET(req: NextRequest) {
 
         const decoded = jwt.verify(token, process.env.JWT_SECRET!) as ProfilePayload;
         // Don't send password to client
-        const { password, ...profile } = decoded;
+        const { ...profile } = decoded;
         return NextResponse.json({ message: "verified user", profile });
 
     } catch {

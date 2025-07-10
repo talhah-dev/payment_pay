@@ -1,8 +1,8 @@
 import mongoDB from "@/lib/mongooseDB";
 import signUpModel from "@/Models/Signup";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
-export async function GET(req: NextRequest) {
+export async function GET() {
     try {
         await mongoDB();
 
@@ -10,7 +10,7 @@ export async function GET(req: NextRequest) {
         // Don't send password to client
         return NextResponse.json({ message: "verified users", users });
 
-    } catch (error) {
+    } catch {
         return NextResponse.json({ message: "Server Error" }, { status: 500 });
     }
 }
