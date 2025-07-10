@@ -1,7 +1,46 @@
+"use client"
+import axios from "axios";
 import Link from "next/link"
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { FaGoogle } from "react-icons/fa"
+import { toast } from "react-toastify";
 
 const Page = () => {
+
+    const router = useRouter()
+
+    const [formData, setFormData] = useState({
+        email: "",
+        password: ""
+    });
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const loginHandler = async (e: React.FormEvent) => {
+        e.preventDefault();
+
+        const { email, password } = formData;
+
+        if (!email.trim() || !password.trim()) {
+            return toast.error("All fields are required!");
+        }
+
+        try {
+            const res = await axios.post("/api/auth/login", formData, {
+                withCredentials: true, // Important for cookies
+            });
+
+            toast.success(res.data.message);
+            router.push("/dashboard");
+        } catch {
+            toast.error("Login failed");
+        }
+    };
+
+
     return (
         <div>
             <div className="w-full flex ">
@@ -14,13 +53,13 @@ const Page = () => {
                         </p>
                     </div>
                 </div>
-                <div className="lg:max-w-1/2 relative w-full bg-[#e5e5e6] min-h-screen flex items-center justify-center p-5">
+                <div onSubmit={loginHandler} className="lg:max-w-1/2 relative w-full bg-[#e5e5e6] min-h-screen flex items-center justify-center p-5">
                     <Link href={"/signup"} className=" text-zinc-800 absolute md:top-8 top-5 md:right-8 right-5">Sign up</Link>
-                    <div className="text-center max-w-sm w-full">
+                    <form className="text-center max-w-sm w-full">
                         <h2 className="text-zinc-800 font-medium text-2xl capitalize">Login</h2>
                         <p className="text-zinc-800 mt-1">Enter your detail below to login your account</p>
-                        <input type="email" placeholder="name@gmail.com" className="border placeholder:text-sm outline-zinc-500 mt-2 rounded-lg border-zinc-400 w-full px-3 py-2" />
-                        <input type="password" placeholder="password" className="border placeholder:text-sm outline-zinc-500 mt-2 rounded-lg border-zinc-400 w-full px-3 py-2" />
+                        <input value={formData.email} name="email" onChange={handleChange} type="email" placeholder="name@gmail.com" className="border placeholder:text-sm outline-zinc-500 mt-2 rounded-lg border-zinc-400 w-full px-3 py-2" />
+                        <input value={formData.password} name="password" onChange={handleChange} type="password" placeholder="password" className="border placeholder:text-sm outline-zinc-500 mt-2 rounded-lg border-zinc-400 w-full px-3 py-2" />
                         <button className="bg-[#18181b] w-full p-2.5 mt-2 transition-all duration-500 hover:opacity-80 cursor-pointer text-center text-zinc-100 rounded-lg ">
                             Login
                         </button>
@@ -37,7 +76,7 @@ const Page = () => {
                         </button>
                         <p className="text-sm text-zinc-500 mt-3">By clicking continue, you agree to our <Link href={"#"} className="underline">Terms of Service</Link> and <Link href={"#"} className="underline">Privacy Policy</Link> .</p>
 
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

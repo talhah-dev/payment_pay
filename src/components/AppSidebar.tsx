@@ -11,14 +11,16 @@ import {
     SidebarMenuItem,
 } from "@/components/ui/sidebar"
 import Link from "next/link"
-import { Avatar, AvatarFallback } from "./ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
 import { usePathname } from "next/navigation"
+import { useEffect, useState } from "react"
+import axios from "axios"
 
 // Menu items.
 const items = [
     {
         title: "Dashboard",
-        url: "/",
+        url: "/dashboard",
         icon: Home,
     },
     {
@@ -48,9 +50,28 @@ const items = [
     },
 ]
 
+interface ProfileProps {
+    name: string;
+    email: string;
+    profileImage: string;
+}
+
 export function AppSidebar() {
 
     const pathname = usePathname()
+    const [payload, setPayload] = useState<ProfileProps | null>(null);
+    const profileApi = async () => {
+        try {
+            const response = await axios.get("/api/user/profile");
+            setPayload(response.data.profile);
+        } catch (error) {
+            console.error("Error fetching profile:", error);
+        }
+    };
+
+    useEffect(() => {
+        profileApi();
+    }, []);
 
     return (
         <Sidebar>
@@ -75,13 +96,13 @@ export function AppSidebar() {
             </SidebarContent>
             <div className="flex items-center gap-2 px-4 py-5 text-left text-sm">
                 <Avatar className="h-8 w-8 rounded-lg">
-                    {/* <AvatarImage src={"user.avatar"} alt={"user.name"} /> */}
+                    <AvatarImage src={payload?.profileImage} alt={payload?.name || "User Profile"} />
                     <AvatarFallback className="rounded-lg">MT</AvatarFallback>
                 </Avatar>
                 <div className="grid flex-1 text-left text-sm leading-tight">
-                    <span className="truncate font-medium">{"user.name"}</span>
+                    <span className="truncate font-medium">{payload?.name || "Guest"}</span>
                     <span className="text-muted-foreground truncate text-xs">
-                        {"user.email"}
+                        {payload?.email || "No email"}
                     </span>
                 </div>
             </div>
