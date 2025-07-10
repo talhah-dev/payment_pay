@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FaGoogle } from "react-icons/fa"
 import { toast } from "react-toastify";
+import img from "../../../Assets/login.jpg"
+import Image from "next/image";
 
 const Page = () => {
 
@@ -45,7 +47,8 @@ const Page = () => {
         <div>
             <div className="w-full flex ">
                 <div className="max-w-1/2 bg-[url(/login.jpg)] lg:block hidden min-h-screen bg-no-repeat bg-center bg-cover relative bg-[#18181b] w-full">
-                    <div className="min-h-screen hidden w-full p-5 lg:flex flex-col justify-between">
+                <Image src={img} alt="img" className="absolute w-full h-hull top-0 left-0 h-screen object-cover"/>
+                    <div className="min-h-screen relative z-20 hidden w-full p-5 lg:flex flex-col justify-between">
                         <Link href={"/"} className="text-white font-medium">
                             Payment Pay
                         </Link>

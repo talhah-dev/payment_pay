@@ -11,6 +11,8 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import { FaGoogle } from "react-icons/fa";
+import Image from "next/image";
+import img from "../../../Assets/login.jpg"
 
 const Page = () => {
     const router = useRouter();
@@ -72,7 +74,8 @@ const Page = () => {
     return (
         <div className="w-full flex">
             <div className="max-w-1/2 bg-[url(/login.jpg)] lg:block hidden min-h-screen bg-no-repeat bg-center bg-cover relative bg-[#18181b] w-full">
-                <div className="min-h-screen hidden w-full p-5 lg:flex flex-col justify-between">
+                <Image src={img} alt="img" className="absolute w-full h-hull top-0 left-0 h-screen object-cover" />
+                <div className="min-h-screen relative z-20 hidden w-full p-5 lg:flex flex-col justify-between">
                     <Link href={"/"} className="text-white font-medium">
                         Payment Pay
                     </Link>
