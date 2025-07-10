@@ -23,7 +23,7 @@ export async function GET(req: NextRequest) {
         const { password, ...profile } = decoded;
         return NextResponse.json({ message: "verified user", profile });
 
-    } catch (error) {
+    } catch {
         return NextResponse.json({ message: "Invalid or expired token" }, { status: 401 });
     }
 }

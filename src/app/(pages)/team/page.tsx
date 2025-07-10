@@ -38,7 +38,7 @@ const Page = () => {
     return (
         <BodyWrapper className="p-5">
             <div>
-                <div className="flex items-center w-full justify-between">
+                <div className="flex items-center mb-10 w-full justify-between">
                     <div>
                         <h2 className="text-xl font-semibold text-zinc-800">Team Members</h2>
                     </div>
@@ -53,7 +53,7 @@ const Page = () => {
                     <div className="mt-10 text-center">No team members found</div>
                 ) : (
                     payload.map((item, index) => (
-                        <Card key={index} className="w-full mt-10">
+                        <Card key={index} className="w-full mt-2">
                             <CardHeader>
                                 <div className="flex items-center gap-2">
                                     <Avatar className="h-12 w-12 rounded-lg">

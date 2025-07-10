@@ -64,7 +64,7 @@ const Page = () => {
                                 <CardHeader>
                                     <CardTitle>Account</CardTitle>
                                     <CardDescription>
-                                        Make changes to your account here. Click save when you're done.
+                                        Make changes to your account here.
                                     </CardDescription>
                                 </CardHeader>
                                 <CardContent className="grid gap-6">
@@ -100,7 +100,7 @@ const Page = () => {
                                 <CardHeader>
                                     <CardTitle>Password</CardTitle>
                                     <CardDescription>
-                                        Change your password here. After saving, you'll be logged out.
+                                        Change your password here. After saving, you will be logged out.
                                     </CardDescription>
                                 </CardHeader>
                                 <CardContent className="grid gap-6">

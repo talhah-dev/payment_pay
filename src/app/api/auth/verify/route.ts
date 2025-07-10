@@ -44,7 +44,7 @@ export async function POST(req: NextRequest) {
         await newUser.save();
 
         return NextResponse.json({ message: "Account verified" });
-    } catch (err) {
+    } catch {
         return NextResponse.json({ message: "Invalid or expired token" }, { status: 400 });
     }
 

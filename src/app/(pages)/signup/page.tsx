@@ -52,8 +52,8 @@ const Page = () => {
             const res = await axios.post("/api/auth/signup", payload);
             toast.success(res.data.message);
             setStep("otp");
-        } catch (err: any) {
-            toast.error(err.response?.data?.message || "Failed to register");
+        } catch {
+            toast.error("Failed to register");
         }
     };
 
@@ -64,8 +64,8 @@ const Page = () => {
             }, { withCredentials: true });
             toast.success(res.data.message);
             router.push("/login");
-        } catch (err: any) {
-            toast.error(err.response?.data?.message || "Invalid Code");
+        } catch {
+            toast.error("Invalid Code");
         }
     };
 
