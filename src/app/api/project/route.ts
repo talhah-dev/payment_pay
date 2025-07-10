@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
         // Verify JWT token
         // let decoded: { _id: string };
         // try {
-        let decoded = jwt.verify(token, process.env.JWT_SECRET!) as { _id: string };
+        const decoded = jwt.verify(token, process.env.JWT_SECRET!) as { _id: string };
 
         // } catch (error) {
         //     console.error("JWT verification error:", error);
@@ -49,12 +49,7 @@ export async function POST(req: NextRequest) {
         });
 
         return NextResponse.json({ message: "Project created successfully", project }, { status: 201 });
-    } catch (error: any) {
-        console.error("Error creating project:", {
-            message: error.message,
-            stack: error.stack,
-            code: error.code,
-        });
+    } catch  {
         return NextResponse.json({ message: "Internal server error" }, { status: 500 });
     }
 }
