@@ -24,8 +24,8 @@ const Page = () => {
             setLoading(true);
             const response = await axios.get("/api/users");
             setPayload(response.data.users);
-        } catch (error) {
-            console.error("Error fetching profile:", error);
+        } catch {
+            console.error("Error fetching profile:");
         } finally {
             setLoading(false);
         }
@@ -57,7 +57,7 @@ const Page = () => {
                             <CardHeader>
                                 <div className="flex items-center gap-2">
                                     <Avatar className="h-12 w-12 rounded-lg">
-                                        <AvatarImage src={item.profileImage} alt={item.name} />
+                                        <AvatarImage className="object-cover" src={item.profileImage} alt={item.name} />
                                         <AvatarFallback className="rounded-lg">MT</AvatarFallback>
                                     </Avatar>
                                     <div>
