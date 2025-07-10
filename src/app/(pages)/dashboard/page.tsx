@@ -1,11 +1,37 @@
+"use client"
 import BodyWrapper from '@/app/BodyWrapper'
 import AddProject from '@/components/AddProject'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardAction, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
-import React from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 import { SlGraph } from 'react-icons/sl'
 
+type Project = {
+    title: string;
+    time: string;
+    status: string;
+    amount: number;
+    paymentStatus: string;
+    createdAt: string;
+};
+
 const Page = () => {
+    const [payload, setPayload] = useState<Project[]>([]);
+    const allProjectsfetch = async () => {
+        try {
+            const response = await axios.get("/api/project");
+            const projects = response.data.projects;
+            setPayload(projects);
+        } catch {
+            console.error("Error fetching projects:");
+        }
+    };
+
+    useEffect(() => {
+        allProjectsfetch();
+    }, []);
+
     return (
         <BodyWrapper className='p-5'>
             <div className=''>
@@ -15,47 +41,46 @@ const Page = () => {
                         <CardHeader>
                             <CardDescription>Total Revenue</CardDescription>
                             <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
-                                $1,250.00
+                                PKR 1,250.00
                             </CardTitle>
                             <CardAction>
                                 <Badge variant="outline">
                                     <SlGraph />
-                                    +12.5%
+                                    Profit
                                 </Badge>
                             </CardAction>
                         </CardHeader>
                         <CardFooter className="flex-col items-start gap-1.5 text-sm">
                             <div className="line-clamp-1 flex gap-2 font-medium">
-                                Trending up this month <SlGraph className="size-4" />
+                                Total Payment <SlGraph className="size-4" />
                             </div>
                             <div className="text-muted-foreground">
-                                Visitors for the last 6 months
+                                Earn for the last 6 months
                             </div>
                         </CardFooter>
                     </Card>
                     <Card className="@container/card">
                         <CardHeader>
-                            <CardDescription>Total Revenue</CardDescription>
+                            <CardDescription>Total Projects</CardDescription>
                             <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
-                                $1,250.00
+                                {payload.length}
                             </CardTitle>
                             <CardAction>
                                 <Badge variant="outline">
                                     <SlGraph />
-                                    +12.5%
+                                    Work
                                 </Badge>
                             </CardAction>
                         </CardHeader>
                         <CardFooter className="flex-col items-start gap-1.5 text-sm">
                             <div className="line-clamp-1 flex gap-2 font-medium">
-                                Trending up this month <SlGraph className="size-4" />
+                                Total Projects Completed <SlGraph className="size-4" />
                             </div>
                             <div className="text-muted-foreground">
-                                Visitors for the last 6 months
+                                Start for the last 6 months
                             </div>
                         </CardFooter>
                     </Card>
-
                 </div>
 
             </div>

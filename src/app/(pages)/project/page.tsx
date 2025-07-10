@@ -16,7 +16,7 @@ import {
 } from "@/components/ui/command";
 import { Progress } from "@/components/ui/progress";
 import axios from "axios";
-import { Calendar, Wallet } from "lucide-react";
+import { Calendar, NotebookPen, Wallet } from "lucide-react";
 import React, { useEffect, useState } from "react";
 
 type Project = {
@@ -82,8 +82,9 @@ const Page = () => {
                                 <CardDescription className="line-clamp-2">
                                     {project.description}
                                 </CardDescription>
-                                <CardAction>
+                                <CardAction className="flex gap-2 items-center">
                                     <Badge variant="outline">{project.status}</Badge>
+                                    <NotebookPen className="text-zinc-700 cursor-pointer" size={18} />
                                 </CardAction>
                             </CardHeader>
                             <CardFooter className="flex items-center justify-between">

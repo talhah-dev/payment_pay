@@ -50,47 +50,46 @@ const Page = () => {
                         <CardHeader>
                             <CardDescription>Total Revenue</CardDescription>
                             <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
-                                $1,250.00
+                                PKR 1,250.00
                             </CardTitle>
                             <CardAction>
                                 <Badge variant="outline">
                                     <SlGraph />
-                                    +12.5%
+                                    Profit
                                 </Badge>
                             </CardAction>
                         </CardHeader>
                         <CardFooter className="flex-col items-start gap-1.5 text-sm">
                             <div className="line-clamp-1 flex gap-2 font-medium">
-                                Trending up this month <SlGraph className="size-4" />
+                                Total Payment <SlGraph className="size-4" />
                             </div>
                             <div className="text-muted-foreground">
-                                Visitors for the last 6 months
+                                Earn for the last 6 months
                             </div>
                         </CardFooter>
                     </Card>
                     <Card className="@container/card">
                         <CardHeader>
-                            <CardDescription>This Month</CardDescription>
+                            <CardDescription>Total Projects</CardDescription>
                             <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
-                                $1,250.00
+                                {payload.length}
                             </CardTitle>
                             <CardAction>
                                 <Badge variant="outline">
                                     <SlGraph />
-                                    +12.5%
+                                    Work
                                 </Badge>
                             </CardAction>
                         </CardHeader>
                         <CardFooter className="flex-col items-start gap-1.5 text-sm">
                             <div className="line-clamp-1 flex gap-2 font-medium">
-                                Trending up this month <SlGraph className="size-4" />
+                                Total Projects Completed <SlGraph className="size-4" />
                             </div>
                             <div className="text-muted-foreground">
-                                Visitors for the last 6 months
+                                Start for the last 6 months
                             </div>
                         </CardFooter>
                     </Card>
-
                 </div>
 
                 <div className="overflow-auto mt-8 w-full">
