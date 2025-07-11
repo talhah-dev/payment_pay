@@ -1,7 +1,6 @@
 "use client";
 import BodyWrapper from "@/app/BodyWrapper";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
 import {
     Card,
     CardContent,
@@ -57,7 +56,7 @@ const Page = () => {
                     <Tabs defaultValue="account">
                         <TabsList>
                             <TabsTrigger value="account">Account</TabsTrigger>
-                            <TabsTrigger value="password">Password</TabsTrigger>
+                            {/* <TabsTrigger value="password">Password</TabsTrigger> */}
                         </TabsList>
                         <TabsContent value="account">
                             <Card>
@@ -95,7 +94,7 @@ const Page = () => {
                                 </CardContent>
                             </Card>
                         </TabsContent>
-                        <TabsContent value="password">
+                        {/* <TabsContent value="password">
                             <Card>
                                 <CardHeader>
                                     <CardTitle>Password</CardTitle>
@@ -117,7 +116,7 @@ const Page = () => {
                                     <Button>Change password</Button>
                                 </CardFooter>
                             </Card>
-                        </TabsContent>
+                        </TabsContent> */}
                     </Tabs>
                 </div>
             </div>

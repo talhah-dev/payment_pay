@@ -5,40 +5,21 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
     try {
-        // Ensure MongoDB connection
         await mongoDB();
-
-        // Parse request body
         const { title, description, deadline, time, amount } = await req.json();
 
-        // Validate input fields
         if (!title || !description || !deadline || !time || !amount) {
             return NextResponse.json({ message: "All fields are required" }, { status: 400 });
         }
 
-        // Validate token
         const token = req.cookies.get("token")?.value;
         if (!token) {
             return NextResponse.json({ message: "Missing token" }, { status: 401 });
         }
 
-        // Verify JWT token
-        // let decoded: { _id: string };
-        // try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET!) as { _id: string };
-
-        // } catch (error) {
-        //     console.error("JWT verification error:", error);
-        //     return NextResponse.json({ message: "Invalid or expired token" }, { status: 401 });
-        // }
-
-        // Ensure user ID is valid
         const userId = decoded._id;
-        // if (!userId || !mongoose.Types.ObjectId.isValid(userId)) {
-        //     return NextResponse.json({ message: "Invalid user ID" }, { status: 400 });
-        // }
 
-        // Create project
         const project = await postModel.create({
             title,
             description,
@@ -49,7 +30,7 @@ export async function POST(req: NextRequest) {
         });
 
         return NextResponse.json({ message: "Project created successfully", project }, { status: 201 });
-    } catch  {
+    } catch {
         return NextResponse.json({ message: "Internal server error" }, { status: 500 });
     }
 }
@@ -59,6 +40,77 @@ export async function GET() {
         await mongoDB();
         const projects = await postModel.find({});
         return NextResponse.json({ projects }, { status: 200 });
+    } catch {
+        return NextResponse.json({ message: "Internal server error" }, { status: 500 });
+    }
+}
+
+export async function PUT(req: NextRequest) {
+    try {
+        await mongoDB();
+        const { id, title, description, deadline, time, amount, status, paymentStatus } = await req.json();
+
+        if (!id) {
+            return NextResponse.json({ message: "Project ID is required" }, { status: 400 });
+        }
+
+        const token = req.cookies.get("token")?.value;
+        if (!token) {
+            return NextResponse.json({ message: "Missing token" }, { status: 401 });
+        }
+
+        const decoded = jwt.verify(token, process.env.JWT_SECRET!) as { _id: string };
+        const userId = decoded._id;
+
+        const updateData: any = {};
+        if (title) updateData.title = title;
+        if (description) updateData.description = description;
+        if (deadline) updateData.deadline = deadline;
+        if (time) updateData.time = time;
+        if (amount) updateData.amount = amount;
+        if (status) updateData.status = status;
+        if (paymentStatus) updateData.paymentStatus = paymentStatus;
+
+        const project = await postModel.findOneAndUpdate(
+            { _id: id, user: userId },
+            updateData,
+            { new: true }
+        );
+
+        if (!project) {
+            return NextResponse.json({ message: "Project not found or unauthorized" }, { status: 404 });
+        }
+
+        return NextResponse.json({ message: "Project updated successfully", project }, { status: 200 });
+    } catch {
+        return NextResponse.json({ message: "Internal server error" }, { status: 500 });
+    }
+}
+
+export async function DELETE(req: NextRequest) {
+    try {
+        await mongoDB();
+        const { id } = await req.json();
+
+        if (!id) {
+            return NextResponse.json({ message: "Project ID is required" }, { status: 400 });
+        }
+
+        const token = req.cookies.get("token")?.value;
+        if (!token) {
+            return NextResponse.json({ message: "Missing token" }, { status: 401 });
+        }
+
+        const decoded = jwt.verify(token, process.env.JWT_SECRET!) as { _id: string };
+        const userId = decoded._id;
+
+        const project = await postModel.findOneAndDelete({ _id: id, user: userId });
+
+        if (!project) {
+            return NextResponse.json({ message: "Project not found or unauthorized" }, { status: 404 });
+        }
+
+        return NextResponse.json({ message: "Project deleted successfully" }, { status: 200 });
     } catch {
         return NextResponse.json({ message: "Internal server error" }, { status: 500 });
     }
