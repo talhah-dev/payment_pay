@@ -45,6 +45,16 @@ export async function GET() {
     }
 }
 
+interface ProjectUpdateData {
+    title?: string;
+    description?: string;
+    deadline?: string; // Or Date, depending on how you store it
+    time?: string; // Or Date, or number
+    amount?: number;
+    status?: string;
+    paymentStatus?: string;
+}
+
 export async function PUT(req: NextRequest) {
     try {
         await mongoDB();
@@ -59,10 +69,14 @@ export async function PUT(req: NextRequest) {
             return NextResponse.json({ message: "Missing token" }, { status: 401 });
         }
 
+        // Make sure to assert the type of the decoded token if you're sure of its structure
         const decoded = jwt.verify(token, process.env.JWT_SECRET!) as { _id: string };
         const userId = decoded._id;
 
-        const updateData: any = {};
+        // Use the defined interface for updateData
+        const updateData: ProjectUpdateData = {};
+
+        // Conditionally add properties to updateData
         if (title) updateData.title = title;
         if (description) updateData.description = description;
         if (deadline) updateData.deadline = deadline;
@@ -74,7 +88,7 @@ export async function PUT(req: NextRequest) {
         const project = await postModel.findOneAndUpdate(
             { _id: id, user: userId },
             updateData,
-            { new: true }
+            { new: true } // Returns the modified document rather than the original
         );
 
         if (!project) {
@@ -82,10 +96,13 @@ export async function PUT(req: NextRequest) {
         }
 
         return NextResponse.json({ message: "Project updated successfully", project }, { status: 200 });
-    } catch {
+    } catch (error) {
+        // It's good practice to log the error for debugging purposes
+        console.error("Error updating project:", error);
         return NextResponse.json({ message: "Internal server error" }, { status: 500 });
     }
 }
+
 
 export async function DELETE(req: NextRequest) {
     try {
