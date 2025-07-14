@@ -19,13 +19,13 @@ import React from "react";
 
 const Page = () => {
 
+    const router = useRouter();
     const { data: payload } = useGetProfileQuery()
     const [logout, { isLoading }] = useLogoutMutation()
 
     if (!payload) {
         return <BodyWrapper className="p-5">Error loading profile</BodyWrapper>; // Handle error case
     }
-    const router = useRouter();
     const handleLogout = async () => {
         try {
             await logout().unwrap()

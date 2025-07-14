@@ -13,8 +13,6 @@ import {
 import Link from "next/link"
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
 import { usePathname } from "next/navigation"
-import { useEffect, useState } from "react"
-import axios from "axios"
 import { useGetProfileQuery } from "@/app/store/api/userApi"
 
 // Menu items.
