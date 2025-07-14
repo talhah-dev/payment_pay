@@ -1,6 +1,9 @@
 "use client";
 import BodyWrapper from "@/app/BodyWrapper";
+import { useLogoutMutation } from "@/app/store/api/authApi";
+import { useGetProfileQuery } from "@/app/store/api/userApi";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 import {
     Card,
     CardContent,
@@ -11,41 +14,25 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-
-interface ProfileProps {
-    name: string;
-    email: string;
-    profileImage: string;
-}
+import { useRouter } from "next/navigation";
+import React from "react";
 
 const Page = () => {
-    const [payload, setPayload] = useState<ProfileProps | null>(null);
-    const [loading, setLoading] = useState(true); // Add loading state
 
-    const profileApi = async () => {
-        try {
-            setLoading(true);
-            const response = await axios.get("/api/user/profile");
-            setPayload(response.data.profile);
-        } catch (error) {
-            console.error("Error fetching profile:", error);
-        } finally {
-            setLoading(false);
-        }
-    };
-
-    useEffect(() => {
-        profileApi();
-    }, []);
-
-    if (loading) {
-        return <BodyWrapper className="p-5">Loading...</BodyWrapper>; // Show loading state
-    }
+    const { data: payload } = useGetProfileQuery()
+    const [logout, { isLoading }] = useLogoutMutation()
 
     if (!payload) {
         return <BodyWrapper className="p-5">Error loading profile</BodyWrapper>; // Handle error case
+    }
+    const router = useRouter();
+    const handleLogout = async () => {
+        try {
+            await logout().unwrap()
+            router.push("/login")
+        } catch (error) {
+            console.error('Logout failed:', error)
+        }
     }
 
     return (
@@ -53,10 +40,13 @@ const Page = () => {
             <div>
                 <div className="flex w-full max-w-s flex-col gap-6">
                     <Tabs defaultValue="account">
-                        <TabsList>
-                            <TabsTrigger value="account">Account</TabsTrigger>
-                            {/* <TabsTrigger value="password">Password</TabsTrigger> */}
-                        </TabsList>
+                        <div className="flex items-center justify-between">
+                            <TabsList>
+                                <TabsTrigger value="account">Account</TabsTrigger>
+                                {/* <TabsTrigger value="password">Password</TabsTrigger> */}
+                            </TabsList>
+                            <Button onClick={handleLogout} disabled={isLoading} variant={"destructive"} className="cursor-pointer">Logout</Button>
+                        </div>
                         <TabsContent value="account">
                             <Card>
                                 <CardHeader>
@@ -68,7 +58,7 @@ const Page = () => {
                                 <CardContent className="grid gap-6">
                                     <Avatar className="md:h-40 h-20 md:w-40 w-20">
                                         <AvatarImage
-                                            className="md:h-40 h-20 md:w-40 w-20"
+                                            className="md:h-40 object-cover h-20 md:w-40 w-20"
                                             src={payload.profileImage}
                                             alt={payload.name || "User Profile"}
                                         />

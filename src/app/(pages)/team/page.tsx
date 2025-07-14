@@ -1,39 +1,16 @@
 "use client";
 import BodyWrapper from "@/app/BodyWrapper";
+import { useGetTeamMembersQuery } from "@/app/store/api/teamApi";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardAction, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import axios from "axios";
 import { User } from "lucide-react";
-import React, { useEffect, useState } from "react";
-
-interface UserProps {
-    name: string;
-    email: string;
-    role: string;
-    profileImage: string;
-}
+import React from "react";
 
 const Page = () => {
-    const [payload, setPayload] = useState<UserProps[]>([]);
-    const [loading, setLoading] = useState(true);
 
-    const profileApi = async () => {
-        try {
-            setLoading(true);
-            const response = await axios.get("/api/users");
-            setPayload(response.data.users);
-        } catch {
-            console.error("Error fetching profile:");
-        } finally {
-            setLoading(false);
-        }
-    };
-
-    useEffect(() => {
-        profileApi();
-    }, []);
+    const { data: members, isLoading } = useGetTeamMembersQuery()
 
     return (
         <BodyWrapper className="p-5">
@@ -47,12 +24,12 @@ const Page = () => {
                     </Button>
                 </div>
 
-                {loading ? (
+                {isLoading ? (
                     <div className="mt-10 text-center">Loading...</div>
-                ) : payload.length === 0 ? (
+                ) : members?.length === 0 ? (
                     <div className="mt-10 text-center">No team members found</div>
                 ) : (
-                    payload.map((item, index) => (
+                    members?.map((item, index) => (
                         <Card key={index} className="w-full mt-2">
                             <CardHeader>
                                 <div className="flex items-center gap-2">

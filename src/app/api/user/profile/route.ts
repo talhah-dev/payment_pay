@@ -1,4 +1,5 @@
 import mongoDB from "@/lib/mongooseDB";
+import signUpModel from "@/Models/Signup";
 import jwt from "jsonwebtoken";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -18,9 +19,12 @@ export async function GET(req: NextRequest) {
         }
 
         const decoded = jwt.verify(token, process.env.JWT_SECRET!) as ProfilePayload;
-        // Don't send password to client
-        const { ...profile } = decoded;
-        return NextResponse.json({ message: "verified user", profile });
+        const user = await signUpModel.findOne({ email: decoded.email }).select("-password");
+
+        if (!user) {
+            return NextResponse.json({ message: "User not found" }, { status: 404 });
+        }
+        return NextResponse.json({ message: "verified user", profile: user });
 
     } catch {
         return NextResponse.json({ message: "Invalid or expired token" }, { status: 401 });
