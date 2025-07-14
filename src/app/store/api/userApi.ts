@@ -15,7 +15,14 @@ export const userApi = createApi({
             query: () => 'user/profile',
             transformResponse: (response: { profile: ProfileProps }) => response.profile,
         }),
+        updateProfile: builder.mutation({
+            query: (body: { profileImage: string }) => ({
+                url: "user/profile",
+                method: "PATCH",
+                body,
+            }),
+        }),
     }),
 })
 
-export const { useGetProfileQuery } = userApi
+export const { useGetProfileQuery, useUpdateProfileMutation } = userApi
